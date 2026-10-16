@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Canadian Multinational — Alimentation Couche-Tard Inc." />
+  <title>Alimentation Couche-Tard | Canadian Multinational</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            ct: {
+              navy: '#101d3a',
+              blue: '#173e78',
+              orange: '#f28c28',
+              cream: '#fff8ed',
+              pale: '#f4f6fa'
+            }
+          },
+          fontFamily: {
+            display: ['Arial', 'Helvetica', 'sans-serif']
+          },
+          boxShadow: {
+            soft: '0 18px 50px rgba(16, 29, 58, 0.09)'
+          }
+        }
+      }
+    };
+  </script>
+  <style>
+    html { scroll-behavior: smooth; scroll-padding-top: 88px; }
+    body, body.bg-white { font-family: Arial, Helvetica, sans-serif; background: radial-gradient(ellipse at 18% 10%, rgba(37, 99, 180, .24), transparent 32%), radial-gradient(ellipse at 84% 42%, rgba(242, 140, 40, .10), transparent 28%), #060b1d !important; color: #edf2ff; }
+    .section-number { font-variant-numeric: tabular-nums; }
+    .nav-link { transition: color .2s ease; }
+    .nav-link:hover { color: #f28c28; }
+    .hero-grid {
+      background-image: radial-gradient(rgba(255,255,255,.11) 1px, transparent 1px);
+      background-size: 26px 26px;
+    }
+    header { border-color: rgba(255,255,255,.09) !important; background: rgba(6,11,29,.86) !important; }
+    header .text-ct-navy { color: #f8fafc !important; }
+    header .text-slate-500 { color: #9fb0cc !important; }
+    header #menuButton { border-color: rgba(255,255,255,.18); color: #f8fafc; }
+    .nav-link { color: #cbd5e1; }
+    .nav-link:hover { color: #fbbf24; }
+    #mobileMenu { background: #0b1227 !important; border-color: rgba(255,255,255,.09) !important; }
+    #mobileMenu a { color: #cbd5e1; }
+    .hero-surface { background-image: linear-gradient(105deg, rgba(4,8,23,.98) 0%, rgba(5,11,34,.94) 48%, rgba(7,16,42,.78) 100%), url('https://images.unsplash.com/photo-1449824913935-59a10b8d2000?auto=format&fit=crop&w=1800&q=85'); background-position: center; background-size: cover; }
+    .eyebrow-line::before { content: ''; display: inline-block; width: 32px; height: 1px; margin-right: 12px; vertical-align: middle; background: #f6a500; }
+    .dark-card { background: linear-gradient(145deg, rgba(18,27,55,.94), rgba(8,14,33,.94)); border: 1px solid rgba(255,255,255,.10); box-shadow: 0 22px 48px rgba(0,0,0,.2); }
+    .metric-card { border-right: 1px solid rgba(255,255,255,.11); }
+    .metric-card:last-child { border-right: 0; }
+    .panel { background: #0b1227; border: 1px solid rgba(255,255,255,.08); }
+    .section-dark { background: #070d20; }
+    .section-deep { background: radial-gradient(circle at 78% 12%, rgba(27,62,120,.28), transparent 27%), #080e21; }
+    .soft-text { color: #9fb0cc; }
+    .map-shell { overflow: hidden; border: 1px solid rgba(255,255,255,.12); border-radius: 22px; background: #111827; box-shadow: 0 24px 55px rgba(0,0,0,.26); }
+    #networkMap { position: relative; height: 430px; width: 100%; overflow: hidden; background: radial-gradient(circle at 50% 45%, #173e78, #0a1125 67%); }
+    #networkMap svg { position: absolute; inset: 0; width: 100%; height: 100%; opacity: .8; }
+    .map-land { fill: #263b5d; stroke: #58749f; stroke-width: .8; }
+    .map-grid { stroke: rgba(180,211,255,.2); stroke-width: .35; }
+    .map-node { position: absolute; z-index: 2; display: grid; place-items: center; width: 18px; height: 18px; padding: 0; border: 2px solid #fff; border-radius: 999px; background: #f6a500; box-shadow: 0 0 0 5px rgba(246,165,0,.2); cursor: pointer; transition: transform .2s ease, box-shadow .2s ease; }
+    .map-node:hover, .map-node:focus-visible { transform: scale(1.2); outline: none; box-shadow: 0 0 0 7px rgba(246,165,0,.28); }
+    .map-node--blue { background: #3db7ee; box-shadow: 0 0 0 5px rgba(61,183,238,.18); }
+    .map-node--large { width: 24px; height: 24px; }
+    .map-caption { position: absolute; z-index: 1; right: 20px; bottom: 16px; color: rgba(214,229,255,.55); font-size: 11px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; }
+    main { background: transparent; }
+    main article { background-color: #0d152c; }
+    .content-image { display: block; height: 170px; width: calc(100% + 3.5rem); max-width: none; margin: -2rem -1.75rem 1.5rem; object-fit: cover; object-position: center; border-radius: 1.1rem 1.1rem 0 0; filter: saturate(1.08) contrast(1.03) brightness(1.08); }
+    .facility-image { display: block; height: 180px; width: calc(100% + 4rem); max-width: none; margin: -2rem -2rem 1.5rem; object-fit: cover; object-position: center; border-radius: 1.1rem 1.1rem 0 0; filter: saturate(1.08) contrast(1.03) brightness(1.08); }
+    main article, .panel, .map-shell, main .rounded-2xl, main .rounded-3xl { transition: transform .25s ease, border-color .25s ease, box-shadow .25s ease, background-color .25s ease; }
+    main article:hover, .panel:hover, main .rounded-2xl:hover, main .rounded-3xl:hover { transform: translateY(-5px); border-color: rgba(246,165,0,.7) !important; box-shadow: 0 0 0 1px rgba(246,165,0,.22), 0 0 28px rgba(246,165,0,.22), 0 22px 45px rgba(0,0,0,.28) !important; }
+    a, button { transition: color .2s ease, background-color .2s ease, border-color .2s ease, box-shadow .2s ease, transform .2s ease; }
+    a:hover, button:hover { box-shadow: 0 0 20px rgba(246,165,0,.24); }
+    a:focus-visible, button:focus-visible { outline: 2px solid #f6a500; outline-offset: 4px; box-shadow: 0 0 0 5px rgba(246,165,0,.25); }
+    main .bg-white { background-color: #0d152c !important; }
+    main .bg-ct-pale { background-color: #080e21 !important; }
+    main .bg-ct-cream { background-color: #111a32 !important; }
+    main .text-ct-navy { color: #f8fafc !important; }
+    main .text-slate-800 { color: #f1f5f9 !important; }
+    main .text-slate-700 { color: #d8e1ee !important; }
+    main .text-slate-600 { color: #b6c5d9 !important; }
+    main .text-slate-500 { color: #93a5bf !important; }
+    main .border-slate-200 { border-color: rgba(255,255,255,.10) !important; }
+    main .shadow-soft, main .shadow-sm { box-shadow: 0 18px 42px rgba(0,0,0,.18) !important; }
+    main .bg-orange-50 { background-color: rgba(246,165,0,.12) !important; }
+    main .bg-blue-50 { background-color: rgba(61,183,238,.12) !important; }
+    main .bg-emerald-50 { background-color: rgba(52,211,153,.12) !important; }
+    main .bg-violet-50 { background-color: rgba(167,139,250,.12) !important; }
+    header { background: rgba(10, 18, 39, .68) !important; backdrop-filter: blur(22px) saturate(155%); -webkit-backdrop-filter: blur(22px) saturate(155%); }
+    .hero-surface { background-image: linear-gradient(105deg, rgba(4,8,23,.78), rgba(5,11,34,.58) 48%, rgba(7,16,42,.42)), url('https://images.unsplash.com/photo-1449824913935-59a10b8d2000?auto=format&fit=crop&w=1800&q=85'); }
+    .dark-card, .panel, main article, main section > div > div > div.bg-ct-cream {
+      position: relative;
+      overflow: hidden;
+      border-radius: 18px;
+      background: linear-gradient(135deg, rgba(160,198,255,.15), rgba(93,132,194,.075) 48%, rgba(255,255,255,.035)) !important;
+      border: 1px solid rgba(194,220,255,.22);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,.18), 0 18px 45px rgba(0,0,0,.22);
+      backdrop-filter: blur(18px) saturate(135%);
+      -webkit-backdrop-filter: blur(18px) saturate(135%);
+    }
+    main article { transition: transform .25s ease, border-color .25s ease, box-shadow .25s ease; }
+    main article:hover { transform: translateY(-4px); border-color: rgba(107,211,255,.42) !important; box-shadow: inset 0 1px 0 rgba(255,255,255,.2), 0 22px 48px rgba(0,0,0,.3) !important; }
+    #countries, #advantages { background-image: radial-gradient(ellipse at 12% 18%, rgba(53,126,212,.11), transparent 32%), radial-gradient(ellipse at 88% 80%, rgba(242,140,40,.06), transparent 28%); }
+    #mobileMenu { background: rgba(10,18,39,.92) !important; backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px); }
+    .brand-mark { width: 44px; height: 44px; flex: 0 0 auto; }
+    .brand-wordmark { line-height: 1; }
+    .brand-wordmark strong { display: block; font-size: 14px; font-weight: 900; letter-spacing: .04em; }
+    .brand-wordmark small { display: block; margin-top: 4px; color: #aebbd0; font-size: 9px; font-weight: 700; letter-spacing: .16em; text-transform: uppercase; }
+    @media (min-width: 640px) { .facility-image { width: calc(100% + 4.5rem); margin-right: -2.25rem; margin-left: -2.25rem; } }
+    @media (max-width: 640px) { #networkMap { height: 340px; } .content-image { height: 155px; } .facility-image { height: 165px; } .metric-card { border-right: 0; border-bottom: 1px solid rgba(255,255,255,.11); } .metric-card:last-child { border-bottom: 0; } }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after { transition-duration: .01ms !important; }
+    }
+  </style>
+</head>
+<body class="bg-white text-slate-800 antialiased">
+  <!-- Sticky navigation -->
+  <header class="sticky top-0 z-50 border-b border-slate-200/80 bg-white/95 backdrop-blur">
+    <nav class="mx-auto flex max-w-7xl items-center justify-between px-5 py-4 lg:px-8" aria-label="Main navigation">
+      <a href="#top" class="flex items-center gap-3" aria-label="Alimentation Couche-Tard home">
+        <svg class="brand-mark" viewBox="0 0 48 48" role="img" aria-label="Couche-Tard owl logo">
+          <path fill="#f28c28" d="M7 19 5 7l12 5a21 21 0 0 1 14 0l12-5-2 12a18 18 0 1 1-34 0Z" />
+          <circle cx="18" cy="23" r="5" fill="#101d3a" /><circle cx="30" cy="23" r="5" fill="#101d3a" />
+          <circle cx="19" cy="22" r="1.5" fill="#fff" /><circle cx="31" cy="22" r="1.5" fill="#fff" />
+          <path d="m22 31 2 3 2-3" fill="#101d3a" />
+        </svg>
+        <span class="brand-wordmark">
+          <strong class="text-white">COUCHE-TARD</strong>
+          <small>Alimentation · Canada</small>
+        </span>
+      </a>
+      <div class="hidden items-center gap-6 text-sm font-semibold text-slate-600 md:flex">
+        <a class="nav-link" href="#company">Company</a>
+        <a class="nav-link" href="#countries">Countries</a>
+        <a class="nav-link" href="#international">International Business</a>
+        <a class="nav-link" href="#industry">Industry</a>
+        <a class="nav-link" href="#facilities">Branch Plants</a>
+        <a class="nav-link" href="#advantages">Advantages</a>
+        <a class="nav-link" href="#sources">Sources</a>
+      </div>
+      <button id="menuButton" class="rounded-lg border border-slate-200 px-3 py-2 text-sm font-semibold text-ct-navy md:hidden" aria-expanded="false" aria-controls="mobileMenu">Menu</button>
+    </nav>
+    <div id="mobileMenu" class="hidden border-t border-slate-100 bg-white px-5 py-3 md:hidden">
+      <div class="grid grid-cols-2 gap-3 text-sm font-semibold text-slate-600">
+        <a class="nav-link" href="#company">Company</a>
+        <a class="nav-link" href="#countries">Countries</a>
+        <a class="nav-link" href="#international">International Business</a>
+        <a class="nav-link" href="#industry">Industry</a>
+        <a class="nav-link" href="#facilities">Branch Plants</a>
+        <a class="nav-link" href="#advantages">Advantages</a>
+        <a class="nav-link" href="#sources">Sources</a>
+      </div>
+    </div>
+  </header>
+
+  <main id="top">
+    <!-- Hero -->
+    <section class="hero-surface relative isolate overflow-hidden text-white">
+      <div class="hero-grid absolute inset-0 opacity-60"></div>
+      <div class="absolute -right-24 -top-24 h-96 w-96 rounded-full border-[54px] border-ct-orange/20"></div>
+      <div class="absolute -bottom-32 right-1/4 h-72 w-72 rounded-full bg-ct-blue/70 blur-3xl"></div>
+      <div class="relative mx-auto grid max-w-7xl items-center gap-12 px-5 py-20 sm:py-28 lg:grid-cols-[1.2fr_.8fr] lg:px-8">
+        <div>
+          <p class="eyebrow-line mb-6 inline-flex items-center gap-2 text-xs font-bold uppercase tracking-[.24em] text-orange-200">
+            <span class="h-2 w-2 rounded-full bg-ct-orange"></span>
+            Canadian Multinational
+          </p>
+          <h1 class="max-w-3xl text-5xl font-black leading-[.98] tracking-tight sm:text-6xl lg:text-7xl">Alimentation<br /><span class="text-amber-400">Couche-Tard Inc.</span></h1>
+          <p class="mt-7 max-w-xl text-lg leading-8 text-slate-300">Based in: Laval, Québec, Canada</p>
+          <a href="#company" class="mt-9 inline-flex items-center gap-3 rounded-xl bg-ct-orange px-6 py-3.5 font-bold text-white shadow-lg shadow-orange-950/20 transition hover:-translate-y-0.5 hover:bg-orange-500">
+            Explore the company <span aria-hidden="true">↓</span>
+          </a>
+        </div>
+        <div class="relative mx-auto w-full max-w-md">
+          <div class="absolute -inset-4 rounded-[2rem] bg-ct-orange/20 blur-2xl"></div>
+          <div class="dark-card relative rounded-[2rem] p-7 shadow-2xl backdrop-blur-sm sm:p-9">
+            <div class="flex items-center justify-between">
+              <span class="text-sm font-bold uppercase tracking-[.2em] text-slate-300">Global footprint</span>
+              <span class="rounded-full bg-ct-orange px-3 py-1 text-xs font-extrabold text-white">Worldwide</span>
+            </div>
+            <div class="mt-8 grid grid-cols-2 gap-4">
+              <div class="rounded-2xl bg-white/10 p-5">
+                <p class="text-4xl font-black text-white">17,300+</p>
+                <p class="mt-2 text-sm leading-5 text-slate-300">stores worldwide</p>
+              </div>
+              <div class="rounded-2xl bg-white/10 p-5">
+                <p class="text-4xl font-black text-white">27</p>
+                <p class="mt-2 text-sm leading-5 text-slate-300">countries and territories</p>
+              </div>
+            </div>
+            <div class="mt-5 flex items-center gap-3 rounded-2xl border border-white/10 p-4">
+              <span class="grid h-11 w-11 shrink-0 place-items-center rounded-xl bg-ct-orange text-xl">↗</span>
+              <p class="text-sm leading-6 text-slate-300">A Canadian company with international retail and fuel operations.</p>
+            </div>
+            <p class="mt-4 text-xs leading-5 text-slate-400">Figures as stated in the provided company profile.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Company -->
+    <section id="company" class="scroll-mt-24 px-5 py-20 sm:py-24 lg:px-8">
+      <div class="mx-auto max-w-7xl">
+        <div class="mb-12 max-w-3xl">
+          <p class="section-number text-sm font-extrabold uppercase tracking-[.2em] text-ct-orange">01 / Company profile</p>
+          <h2 class="mt-3 text-3xl font-black tracking-tight text-ct-navy sm:text-4xl">Description of goods/services</h2>
+        </div>
+        <div class="grid gap-8 lg:grid-cols-[.8fr_1.2fr]">
+          <div class="rounded-3xl bg-ct-cream p-8 sm:p-10">
+            <div class="mb-6 grid h-14 w-14 place-items-center rounded-2xl bg-ct-orange text-2xl text-white">◎</div>
+            <p class="text-lg font-semibold leading-8 text-ct-navy">Alimentation Couche-Tard Inc. is a Canadian multinational retail leader in the convenience store and road transportation fuel sectors</p>
+            <div class="mt-8 h-1.5 w-20 rounded-full bg-ct-orange"></div>
+          </div>
+          <div class="grid gap-5 sm:grid-cols-2">
+            <article class="rounded-3xl border border-slate-200 p-7 shadow-soft">
+              <img class="content-image" src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?auto=format&fit=crop&w=900&q=80" alt="Convenience store checkout counter" />
+              <div class="mb-5 grid h-12 w-12 place-items-center rounded-xl bg-orange-50 text-2xl">🛍️</div>
+              <p class="leading-7 text-slate-700">Operates thousands of physical retail locations offering fresh food, prepared quick-service meals, hot and cold beverages, packaged snacks, and everyday household essentials</p>
+            </article>
+            <article class="rounded-3xl border border-slate-200 p-7 shadow-soft">
+              <img class="content-image" src="https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?auto=format&fit=crop&w=900&q=80" alt="Car representing mobility fuel" />
+              <div class="mb-5 grid h-12 w-12 place-items-center rounded-xl bg-blue-50 text-2xl">⛽</div>
+              <p class="leading-7 text-slate-700">Distributes and sells fuel (gasoline and diesel) under Circle K, Couche-Tard, Shell, and Esso banners in Canada</p>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Countries -->
+    <section id="countries" class="scroll-mt-24 bg-ct-pale px-5 py-20 sm:py-24 lg:px-8">
+      <div class="mx-auto max-w-7xl">
+        <div class="mb-12 flex flex-col justify-between gap-5 md:flex-row md:items-end">
+          <div>
+            <p class="section-number text-sm font-extrabold uppercase tracking-[.2em] text-ct-orange">02 / Global reach</p>
+            <h2 class="mt-3 text-3xl font-black tracking-tight text-ct-navy sm:text-4xl">Countries the company has done business with</h2>
+          </div>
+          <p class="max-w-sm text-sm leading-6 text-slate-500">International presence across North America, Europe, and Asia.</p>
+        </div>
+        <div class="mb-8 grid gap-4 sm:grid-cols-3">
+          <div class="rounded-2xl bg-ct-navy p-6 text-white">
+            <p class="text-3xl font-black">17,300+</p>
+            <p class="mt-2 text-sm text-slate-300">stores worldwide</p>
+          </div>
+          <div class="rounded-2xl bg-white p-6 shadow-sm">
+            <p class="text-3xl font-black text-ct-navy">27</p>
+            <p class="mt-2 text-sm text-slate-500">countries and territories</p>
+          </div>
+          <div class="rounded-2xl bg-white p-6 shadow-sm">
+            <p class="text-3xl font-black text-ct-navy">2,700+</p>
+            <p class="mt-2 text-sm text-slate-500">franchised stores in other nations</p>
+          </div>
+        </div>
+        <div class="grid gap-5 lg:grid-cols-3">
+          <article class="rounded-3xl bg-white p-7 shadow-sm">
+            <div class="mb-5 flex items-center gap-3">
+              <span class="grid h-11 w-11 place-items-center rounded-xl bg-red-50 text-xl">🌎</span>
+              <h3 class="text-xl font-extrabold text-ct-navy">North America</h3>
+            </div>
+            <ul class="space-y-3 leading-6 text-slate-600">
+              <li>Over 7,200 stores in the U.S. across 48 states</li>
+              <li>1188 stores in Mexico</li>
+              <li>Around 2,100 stores in Canada with coast-to-coast coverage</li>
+            </ul>
+          </article>
+          <article class="rounded-3xl bg-white p-7 shadow-sm">
+            <div class="mb-5 flex items-center gap-3">
+              <span class="grid h-11 w-11 place-items-center rounded-xl bg-blue-50 text-xl">🌍</span>
+              <h3 class="text-xl font-extrabold text-ct-navy">Eurasia</h3>
+            </div>
+            <p class="leading-7 text-slate-600">Operates in Norway, Sweden, Denmark, Germany, Poland, Ireland, Belgium, Luxembourg, Netherlands, Baltic states, and Hong Kong</p>
+          </article>
+          <article class="rounded-3xl bg-white p-7 shadow-sm">
+            <div class="mb-5 flex items-center gap-3">
+              <span class="grid h-11 w-11 place-items-center rounded-xl bg-emerald-50 text-xl">🌐</span>
+              <h3 class="text-xl font-extrabold text-ct-navy">Franchised stores</h3>
+            </div>
+            <p class="leading-7 text-slate-600">Over 2,700 franchised stores in other nations such as Saudi Arabia, Egypt, UAE, Vietnam, Guatemala, and New Zealand</p>
+          </article>
+        </div>
+        <div class="mt-10 grid gap-5 lg:grid-cols-[1.7fr_.8fr]">
+          <div class="map-shell">
+            <div id="networkMap" aria-label="Interactive map of global operations">
+              <svg viewBox="0 0 1000 520" role="img" aria-label="Stylized world map">
+                <path class="map-grid" d="M0 104H1000M0 208H1000M0 312H1000M0 416H1000M166 0V520M333 0V520M500 0V520M666 0V520M833 0V520" />
+                <path class="map-land" d="M74 104l55-35 76 16 33 39-17 42-58 7-23 30-52-12-33-41zM237 219l44 17 20 66-15 88-35 56-23-24 9-72-23-64z" />
+                <path class="map-land" d="M424 110l55-25 49 24 16 42-27 29-38-8-29 35-44-14-14-44zM503 220l44 20 29 77-18 107-37 55-28-40 18-83-31-74z" />
+                <path class="map-land" d="M546 121l80-27 103 20 52 47-25 54-77-7-27 31-54-19-23-43zM707 239l58 20 24 57-21 47-53-19-31-51z" />
+                <path class="map-land" d="M814 340l62-16 53 31-17 45-66 9-38-35z" />
+              </svg>
+              <button class="map-node map-node--large" style="left:26%;top:25%" data-location="0" aria-label="Laval, Québec (HQ)"></button>
+              <button class="map-node map-node--large" style="left:19%;top:35%" data-location="1" aria-label="United States"></button>
+              <button class="map-node" style="left:16%;top:46%" data-location="2" aria-label="Mexico"></button>
+              <button class="map-node" style="left:49%;top:23%" data-location="3" aria-label="Oslo"></button>
+              <button class="map-node" style="left:52%;top:32%" data-location="4" aria-label="Western Europe"></button>
+              <button class="map-node map-node--blue" style="left:82%;top:43%" data-location="5" aria-label="Hong Kong"></button>
+              <button class="map-node map-node--blue" style="left:61%;top:51%" data-location="6" aria-label="Franchised stores"></button>
+              <span class="map-caption">Interactive global presence</span>
+            </div>
+          </div>
+          <aside class="panel rounded-3xl p-7 sm:p-8">
+            <p class="section-number text-xs font-extrabold uppercase tracking-[.2em] text-ct-orange">Interactive network</p>
+            <h3 id="mapLocation" class="mt-4 text-2xl font-black text-white">Laval, Québec (HQ)</h3>
+            <p id="mapCountry" class="mt-1 text-sm soft-text">Canada</p>
+            <div class="mt-6 border-l-2 border-ct-orange pl-4">
+              <p id="mapStores" class="text-3xl font-black text-white">~2,100</p>
+              <p class="mt-1 text-sm soft-text">stores</p>
+            </div>
+            <p id="mapDescription" class="mt-6 leading-7 text-slate-300">Coast-to-coast Canadian stores; global headquarters.</p>
+            <p class="mt-10 text-sm leading-6 text-slate-500">Click any node on the map to explore.</p>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <!-- International business -->
+    <section id="international" class="scroll-mt-24 px-5 py-20 sm:py-24 lg:px-8">
+      <div class="mx-auto max-w-7xl">
+        <div class="mb-12 max-w-3xl">
+          <p class="section-number text-sm font-extrabold uppercase tracking-[.2em] text-ct-orange">03 / Global operations</p>
+          <h2 class="mt-3 text-3xl font-black tracking-tight text-ct-navy sm:text-4xl">Type of international business the company has been involved with</h2>
+        </div>
+        <div class="grid gap-4 md:grid-cols-2">
+          <article class="group rounded-3xl border border-slate-200 p-7 transition hover:border-ct-orange/50 hover:shadow-soft sm:p-8">
+            <div class="flex items-start gap-5">
+              <span class="grid h-12 w-12 shrink-0 place-items-center rounded-2xl bg-orange-50 text-xl font-black text-ct-orange">01</span>
+              <div>
+                <h3 class="text-xl font-extrabold text-ct-navy">Foreign Direct Investment (FDI)</h3>
+                <p class="mt-3 leading-7 text-slate-600">Primary driver is Foreign Direct Investment (FDI), acquiring entire foreign retail chains, fuel networks, and real estate assets directly (i.e., Circle K in the US, Statoil in Europe, TotalEnergies assets in Western Europe)</p>
+              </div>
+            </div>
+          </article>
+          <article class="group rounded-3xl border border-slate-200 p-7 transition hover:border-ct-orange/50 hover:shadow-soft sm:p-8">
+            <div class="flex items-start gap-5">
+              <span class="grid h-12 w-12 shrink-0 place-items-center rounded-2xl bg-blue-50 text-xl font-black text-ct-blue">02</span>
+              <div>
+                <h3 class="text-xl font-extrabold text-ct-navy">Licensing</h3>
+                <p class="mt-3 leading-7 text-slate-600">Licenses the Circle K brand name, operating systems, and store blueprints to local independent operators in regions where corporate ownership isn't used</p>
+              </div>
+            </div>
+          </article>
+          <article class="group rounded-3xl border border-slate-200 p-7 transition hover:border-ct-orange/50 hover:shadow-soft sm:p-8">
+            <div class="flex items-start gap-5">
+              <span class="grid h-12 w-12 shrink-0 place-items-center rounded-2xl bg-emerald-50 text-xl font-black text-emerald-700">03</span>
+              <div>
+                <h3 class="text-xl font-extrabold text-ct-navy">Imports</h3>
+                <p class="mt-3 leading-7 text-slate-600">Imports global private-label goods, specialty food items, and beverage inventory to supply retail network</p>
+              </div>
+            </div>
+          </article>
+          <article class="group rounded-3xl border border-slate-200 p-7 transition hover:border-ct-orange/50 hover:shadow-soft sm:p-8">
+            <div class="flex items-start gap-5">
+              <span class="grid h-12 w-12 shrink-0 place-items-center rounded-2xl bg-violet-50 text-xl font-black text-violet-700">04</span>
+              <div>
+                <h3 class="text-xl font-extrabold text-ct-navy">Strategic alliances</h3>
+                <p class="mt-3 leading-7 text-slate-600">Partners with major oil refiners (Shell, Esso) and digital delivery platforms (DoorDash, Uber Eats) to maximize traffic and sales reach</p>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Industry -->
+    <section id="industry" class="scroll-mt-24 bg-ct-navy px-5 py-20 text-white sm:py-24 lg:px-8">
+      <div class="mx-auto grid max-w-7xl gap-12 lg:grid-cols-[.75fr_1.25fr] lg:items-start">
+        <div>
+          <p class="section-number text-sm font-extrabold uppercase tracking-[.2em] text-ct-orange">04 / Sector</p>
+          <h2 class="mt-3 text-3xl font-black tracking-tight sm:text-4xl">The industry the company operates in</h2>
+          <div class="mt-8 inline-flex items-center gap-3 rounded-2xl border border-white/15 bg-white/10 px-5 py-4">
+            <span class="grid h-10 w-10 place-items-center rounded-xl bg-ct-orange text-xl">↗</span>
+            <span>
+              <span class="block text-xs font-bold uppercase tracking-[.15em] text-slate-300">Industry classification</span>
+              <span class="mt-1 block text-lg font-extrabold">Tertiary industry</span>
+            </span>
+          </div>
+        </div>
+        <div class="space-y-4">
+          <div class="rounded-2xl border border-white/10 bg-white/5 p-6 sm:p-7">
+            <span class="text-sm font-extrabold uppercase tracking-[.15em] text-ct-orange">Service and retail</span>
+            <p class="mt-3 leading-7 text-slate-200">Tertiary industry (service and retail sector)</p>
+          </div>
+          <div class="rounded-2xl border border-white/10 bg-white/5 p-6 sm:p-7">
+            <span class="text-sm font-extrabold uppercase tracking-[.15em] text-ct-orange">Direct to consumers</span>
+            <p class="mt-3 leading-7 text-slate-200">Functions as a retail distributor and service provider, selling finished consumer goods, convenience meals, mobility fuels, and financial services directly to consumers</p>
+          </div>
+          <div class="rounded-2xl border border-white/10 bg-white/5 p-6 sm:p-7">
+            <span class="text-sm font-extrabold uppercase tracking-[.15em] text-ct-orange">Supply chain</span>
+            <p class="mt-3 leading-7 text-slate-200">Uses primary industries to extract raw commodities and secondary industries to refine crude oil</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Branch plants -->
+    <section id="facilities" class="scroll-mt-24 px-5 py-20 sm:py-24 lg:px-8">
+      <div class="mx-auto max-w-7xl">
+        <div class="mb-12 max-w-3xl">
+          <p class="section-number text-sm font-extrabold uppercase tracking-[.2em] text-ct-orange">05 / International presence</p>
+          <h2 class="mt-3 text-3xl font-black tracking-tight text-ct-navy sm:text-4xl">Does the company have branch plants in other countries?</h2>
+        </div>
+        <div class="grid gap-6 lg:grid-cols-2">
+          <article class="rounded-3xl bg-ct-pale p-8 sm:p-9">
+            <img class="facility-image" src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1100&q=80" alt="Modern corporate office building" />
+            <div class="mb-6 grid h-14 w-14 place-items-center rounded-2xl bg-white text-2xl shadow-sm">🏢</div>
+            <p class="text-lg leading-8 text-slate-700">Maintains 15 corporate business units in the U.S., 3 in Canada, a major European head office in Oslo, Norway, and localized operational management teams throughout Europe and Asia</p>
+          </article>
+          <article class="rounded-3xl bg-ct-cream p-8 sm:p-9">
+            <img class="facility-image" src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=1100&q=80" alt="Distribution warehouse" />
+            <div class="mb-6 grid h-14 w-14 place-items-center rounded-2xl bg-white text-2xl shadow-sm">🚚</div>
+            <p class="text-lg leading-8 text-slate-700">Owns and operates foreign fuel terminals, bulk storage facilities, transport trucking fleets, and localized regional distribution centers to keep its retail store inventory supplied</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Competitive advantages -->
+    <section id="advantages" class="scroll-mt-24 bg-ct-pale px-5 py-20 sm:py-24 lg:px-8">
+      <div class="mx-auto max-w-7xl">
+        <div class="mb-12 max-w-3xl">
+          <p class="section-number text-sm font-extrabold uppercase tracking-[.2em] text-ct-orange">06 / What sets it apart</p>
+          <h2 class="mt-3 text-3xl font-black tracking-tight text-ct-navy sm:text-4xl">The company’s competitive advantages</h2>
+        </div>
+        <div class="grid gap-5 md:grid-cols-2">
+          <article class="rounded-3xl bg-white p-7 shadow-sm sm:p-8">
+            <div class="mb-5 grid h-12 w-12 place-items-center rounded-2xl bg-orange-50 text-2xl">📦</div>
+            <p class="text-lg leading-8 text-slate-700">Leverages a network of over 17,300 stores to secure lower wholesale inventory and fuel purchase costs from global vendors</p>
+          </article>
+          <article class="rounded-3xl bg-white p-7 shadow-sm sm:p-8">
+            <div class="mb-5 grid h-12 w-12 place-items-center rounded-2xl bg-blue-50 text-2xl">⭕</div>
+            <p class="text-lg leading-8 text-slate-700">Uses the recognizable Circle K brand globally (outside of Quebec), building high familiarity with international consumers and travelers</p>
+          </article>
+          <article class="rounded-3xl bg-white p-7 shadow-sm sm:p-8">
+            <div class="mb-5 grid h-12 w-12 place-items-center rounded-2xl bg-emerald-50 text-2xl">📈</div>
+            <p class="text-lg leading-8 text-slate-700">Often acquires underperforming convenience chains and reconstructs them into high-margin assets using a decentralized management strategy</p>
+          </article>
+          <article class="rounded-3xl bg-white p-7 shadow-sm sm:p-8">
+            <div class="mb-5 grid h-12 w-12 place-items-center rounded-2xl bg-violet-50 text-2xl">⚡</div>
+            <p class="text-lg leading-8 text-slate-700">Pioneered Electric Vehicle (EV) fast-charging hubs early in Norway</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Sources -->
+    <section id="sources" class="scroll-mt-24 px-5 py-20 sm:py-24 lg:px-8">
+      <div class="mx-auto max-w-7xl">
+        <div class="mb-10">
+          <p class="section-number text-sm font-extrabold uppercase tracking-[.2em] text-ct-orange">07 / Research</p>
+          <h2 class="mt-3 text-3xl font-black tracking-tight text-ct-navy sm:text-4xl">Works Cited</h2>
+        </div>
+        <div class="space-y-4">
+          <article class="rounded-2xl border border-slate-200 p-5 sm:p-6">
+            <p class="font-semibold leading-7 text-slate-800">Alimentation Couche-Tard. (2026a). <em>Our company.</em> <span class="italic">Couche-Tard Corporate.</span></p>
+            <a class="mt-2 inline-block break-all text-sm font-semibold text-ct-blue underline decoration-ct-orange decoration-2 underline-offset-4 hover:text-ct-orange" href="https://corporate.couche-tard.com/our-company" target="_blank" rel="noopener noreferrer">https://corporate.couche-tard.com/our-company</a>
+          </article>
+          <article class="rounded-2xl border border-slate-200 p-5 sm:p-6">
+            <p class="font-semibold leading-7 text-slate-800">Alimentation Couche-Tard. (2026b). <em>Where we operate.</em> <span class="italic">Couche-Tard Corporate.</span></p>
+            <a class="mt-2 inline-block break-all text-sm font-semibold text-ct-blue underline decoration-ct-orange decoration-2 underline-offset-4 hover:text-ct-orange" href="https://corporate.couche-tard.com/where-we-operate" target="_blank" rel="noopener noreferrer">https://corporate.couche-tard.com/where-we-operate</a>
+          </article>
+          <article class="rounded-2xl border border-slate-200 p-5 sm:p-6">
+            <p class="font-semibold leading-7 text-slate-800">Alimentation Couche-Tard. (2026c, October 9). <em>Alimentation Couche-Tard enters into definitive agreement to acquire retail assets from Irving Oil in Québec and Ontario.</em> <span class="italic">Couche-Tard Corporate Newsroom.</span></p>
+            <a class="mt-2 inline-block break-all text-sm font-semibold text-ct-blue underline decoration-ct-orange decoration-2 underline-offset-4 hover:text-ct-orange" href="https://corporate.couche-tard.com/2026-10-09-ALIMENTATION-COUCHE-TARD-ENTERS-INTO-DEFINITIVE-AGREEMENT-TO-ACQUIRE-RETAIL-ASSETS-FROM-IRVING-OIL-IN-QUEBEC-AND-ONTARIO" target="_blank" rel="noopener noreferrer">https://corporate.couche-tard.com/2026-10-09-ALIMENTATION-COUCHE-TARD-ENTERS-INTO-DEFINITIVE-AGREEMENT-TO-ACQUIRE-RETAIL-ASSETS-FROM-IRVING-OIL-IN-QUEBEC-AND-ONTARIO</a>
+          </article>
+          <article class="rounded-2xl border border-slate-200 p-5 sm:p-6">
+            <p class="font-semibold leading-7 text-slate-800">Bradburn, J. (2026). <em>Alimentation Couche-Tard.</em> <span class="italic">The Canadian Encyclopedia.</span></p>
+            <a class="mt-2 inline-block break-all text-sm font-semibold text-ct-blue underline decoration-ct-orange decoration-2 underline-offset-4 hover:text-ct-orange" href="https://thecanadianencyclopedia.ca/index.php/en/article/alimentation-couche-tard" target="_blank" rel="noopener noreferrer">https://thecanadianencyclopedia.ca/index.php/en/article/alimentation-couche-tard</a>
+          </article>
+          <article class="rounded-2xl border border-slate-200 p-5 sm:p-6">
+            <p class="font-semibold leading-7 text-slate-800">S&amp;P Global Ratings. (2023, September 18). <em>Alimentation Couche-Tard Inc. upgraded to 'BBB+' from 'BBB' on strong business risk profile; outlook stable.</em> <span class="italic">S&amp;P Global Ratings.</span></p>
+            <a class="mt-2 inline-block break-all text-sm font-semibold text-ct-blue underline decoration-ct-orange decoration-2 underline-offset-4 hover:text-ct-orange" href="https://www.spglobal.com/ratings/en/regulatory/article/-/view/type/HTML/id/3056461" target="_blank" rel="noopener noreferrer">https://www.spglobal.com/ratings/en/regulatory/article/-/view/type/HTML/id/3056461</a>
+          </article>
+          <article class="rounded-2xl border border-slate-200 p-5 sm:p-6">
+            <p class="font-semibold leading-7 text-slate-800">Yahoo Finance. (n.d.). <em>Alimentation Couche-Tard Inc. (ATD.TO) company profile.</em> <span class="italic">Yahoo Finance.</span> Retrieved October 15, 2026, from</p>
+            <a class="mt-2 inline-block break-all text-sm font-semibold text-ct-blue underline decoration-ct-orange decoration-2 underline-offset-4 hover:text-ct-orange" href="https://finance.yahoo.com/quote/ATD.TO/profile" target="_blank" rel="noopener noreferrer">https://finance.yahoo.com/quote/ATD.TO/profile</a>
+          </article>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="bg-ct-navy px-5 py-8 text-white lg:px-8">
+    <div class="mx-auto flex max-w-7xl flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+      <div>
+        <p class="font-extrabold tracking-wide">ALIMENTATION COUCHE-TARD INC.</p>
+        <p class="mt-1 text-sm text-slate-400">Based in: Laval, Québec, Canada</p>
+      </div>
+      <a href="#top" class="inline-flex w-fit items-center gap-2 rounded-lg border border-white/20 px-4 py-2 text-sm font-semibold transition hover:border-ct-orange hover:text-ct-orange">Back to top ↑</a>
+    </div>
+  </footer>
+
+  <script>
+    const menuButton = document.getElementById('menuButton');
+    const mobileMenu = document.getElementById('mobileMenu');
+    menuButton.addEventListener('click', () => {
+      const isExpanded = menuButton.getAttribute('aria-expanded') === 'true';
+      menuButton.setAttribute('aria-expanded', String(!isExpanded));
+      mobileMenu.classList.toggle('hidden', isExpanded);
+    });
+    mobileMenu.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        mobileMenu.classList.add('hidden');
+        menuButton.setAttribute('aria-expanded', 'false');
+      });
+    });
+
+    const locations = [
+      { name: 'Laval, Québec (HQ)', country: 'Canada', stores: '~2,100', description: 'Coast-to-coast Canadian stores; global headquarters.', coords: [45.6066, -73.7124], type: 'large' },
+      { name: 'United States', country: 'North America', stores: '7,200+', description: 'Over 7,200 stores in the U.S. across 48 states.', coords: [39.5, -98.35], type: 'large' },
+      { name: 'Mexico', country: 'North America', stores: '1,188', description: '1188 stores in Mexico.', coords: [23.7, -102.5] },
+      { name: 'Oslo', country: 'Norway', stores: '—', description: 'A major European head office in Oslo, Norway.', coords: [59.9139, 10.7522] },
+      { name: 'Western Europe', country: 'Europe', stores: '—', description: 'Operations include Norway, Sweden, Denmark, Germany, Poland, Ireland, Belgium, Luxembourg, Netherlands, and Baltic states.', coords: [51.2, 10.4] },
+      { name: 'Hong Kong', country: 'Asia', stores: '—', description: 'International presence includes Hong Kong.', coords: [22.3193, 114.1694], type: 'blue' },
+      { name: 'Franchised stores', country: 'Other nations', stores: '2,700+', description: 'Over 2,700 franchised stores in other nations such as Saudi Arabia, Egypt, UAE, Vietnam, Guatemala, and New Zealand.', coords: [25.2, 46.7], type: 'blue' }
+    ];
+
+    const mapLocation = document.getElementById('mapLocation');
+    const mapCountry = document.getElementById('mapCountry');
+    const mapStores = document.getElementById('mapStores');
+    const mapDescription = document.getElementById('mapDescription');
+    const updateLocation = location => {
+      mapLocation.textContent = location.name;
+      mapCountry.textContent = location.country;
+      mapStores.textContent = location.stores;
+      mapDescription.textContent = location.description;
+    };
+    document.querySelectorAll('.map-node').forEach(node => {
+      node.addEventListener('click', () => updateLocation(locations[Number(node.dataset.location)]));
+    });
+  </script>
+</body>
+</html>
